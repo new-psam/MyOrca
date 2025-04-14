@@ -6,5 +6,5 @@ public class Categoria
     public string? Nome { get; set; }
     public string? Slug { get; set; }
 
-    public List<SubCategoria>? SubCategorias { get; set; }
+    public IList<SubCategoria>? SubCategorias { get; set; }
 }

@@ -1,6 +1,6 @@
 namespace MyOrca.Models;
 
-public class Trasacao
+public class Transacao
 {
     public int Id { get; set; }
     
@@ -10,7 +10,7 @@ public class Trasacao
     public ContaFinanceira? ContaFinanceira { get; set; }
     
     public string? Descricao { get; set; }
-    public bool Tipo { get; set; }
+    public char Tipo { get; set; }
     public DateTime Data { get; set; }
     public decimal Valor { get; set; }
 }

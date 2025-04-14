@@ -9,4 +9,6 @@ public class SubCategoria
     
     public string? Nome { get; set; }
     public string? Slug { get; set; }
+
+    public IList<Transacao>? Transacoes { get; set; }
 }

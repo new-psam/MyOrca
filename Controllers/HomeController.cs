@@ -1,6 +1,13 @@
-namespace MyOrca.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
-public class HomeController
+namespace MyOrca.Controllers;
+[ApiController]
+[Route("")]
+public class HomeController : ControllerBase
 {
-    
+    [HttpGet("")]
+    public IActionResult Get()
+    {
+        return Ok();
+    }
 }

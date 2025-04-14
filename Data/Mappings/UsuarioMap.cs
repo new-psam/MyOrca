@@ -33,5 +33,9 @@ public class UsuarioMap : IEntityTypeConfiguration<Usuario>
             .IsRequired()
             .HasColumnType("varchar")
             .HasMaxLength(100);
+        builder.HasIndex(x=>x.Username, "IX_USUARIO_Username")
+            .IsUnique();
+        
+        
     }
 }

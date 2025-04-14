@@ -23,6 +23,7 @@ public class CategoriaMap : IEntityTypeConfiguration<Categoria>
             .HasMaxLength(100);
         builder.HasIndex(x => x.Slug, "IX_Categoria_Slug")
             .IsUnique();
+        
             
     }
 }

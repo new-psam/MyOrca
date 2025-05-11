@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOrca.Data;
 
@@ -11,9 +12,11 @@ using MyOrca.Data;
 namespace MyOrca.Migrations
 {
     [DbContext(typeof(OrcaDataContext))]
-    partial class OrcaDataContextModelSnapshot : ModelSnapshot
+    [Migration("20250509125828_AdicionadoEmailSlugETabelaRole")]
+    partial class AdicionadoEmailSlugETabelaRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,6 +208,7 @@ namespace MyOrca.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Celular")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar")
                         .HasColumnName("Celular");
@@ -227,9 +231,8 @@ namespace MyOrca.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Senha");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Slug")
                         .IsRequired()

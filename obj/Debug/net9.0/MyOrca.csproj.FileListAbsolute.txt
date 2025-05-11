@@ -161,3 +161,5 @@
 /Users/marcelinosantos/dev1/MyOrca/obj/Debug/net9.0/MyOrca.pdb
 /Users/marcelinosantos/dev1/MyOrca/obj/Debug/net9.0/MyOrca.genruntimeconfig.cache
 /Users/marcelinosantos/dev1/MyOrca/obj/Debug/net9.0/ref/MyOrca.dll
+/Users/marcelinosantos/dev1/MyOrca/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/marcelinosantos/dev1/MyOrca/bin/Debug/net9.0/SecureIdentity.dll

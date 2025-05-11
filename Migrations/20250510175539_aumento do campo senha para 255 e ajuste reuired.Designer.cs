@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOrca.Data;
 
@@ -11,9 +12,11 @@ using MyOrca.Data;
 namespace MyOrca.Migrations
 {
     [DbContext(typeof(OrcaDataContext))]
-    partial class OrcaDataContextModelSnapshot : ModelSnapshot
+    [Migration("20250510175539_aumento do campo senha para 255 e ajuste reuired")]
+    partial class aumentodocamposenhapara255eajustereuired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

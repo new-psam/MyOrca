@@ -10,32 +10,67 @@ public class UsuarioMap : IEntityTypeConfiguration<Usuario>
     {
         builder.ToTable("Usuario");
         builder.HasKey(x => x.Id);
+        
         builder.Property(x => x.Id)
             .ValueGeneratedOnAdd()
             .UseIdentityColumn();
+        
         builder.Property(x => x.Nome)
             .IsRequired()
             .HasColumnType("nvarchar")
             .HasMaxLength(100);
+        
         builder.Property(x => x.Senha)
             .IsRequired()
+            .HasColumnName("Senha")
             .HasColumnType("varchar")
-            .HasMaxLength(10);
+            .HasMaxLength(255);
+        
         builder.Property(x=>x.Cpf)
             .IsRequired()
             .HasColumnType("varchar")
             .HasMaxLength(20);
+        
         builder.Property(x=>x.Celular)
-            .IsRequired()
+            .IsRequired(false)
+            .HasColumnName("Celular")
             .HasColumnType("varchar")
             .HasMaxLength(20);
-        builder.Property(x=>x.Username)
+        
+        builder.Property(x=>x.Email)
             .IsRequired()
+            .HasColumnName("Email")
             .HasColumnType("varchar")
-            .HasMaxLength(100);
-        builder.HasIndex(x=>x.Username, "IX_USUARIO_Username")
+            .HasMaxLength(160);
+        
+        builder.Property(x => x.Slug)
+            .IsRequired()
+            .HasColumnName("Slug")
+            .HasColumnType("VARCHAR")
+            .HasMaxLength(80);
+       
+        // Indices
+        builder
+            .HasIndex(x=>x.Slug, "IX_USUARIO_Username")
             .IsUnique();
         
-        
+        //Relacionamentos
+        builder
+            .HasMany(x => x.Roles)
+            .WithMany(x => x.Usuarios)
+            .UsingEntity<Dictionary<string, object>>(
+                "UsuarioRole",
+                role => role
+                    .HasOne<Role>()
+                    .WithMany()
+                    .HasForeignKey("RoleId")
+                    .HasConstraintName("FK_UsuarioRole_RoleId")
+                    .OnDelete(DeleteBehavior.Cascade),
+                usuario => usuario
+                    .HasOne<Usuario>()
+                    .WithMany()
+                    .HasForeignKey("UsuarioId")
+                    .HasConstraintName("FK_UsuarioRole_UsuarioId")
+                    .OnDelete(DeleteBehavior.Cascade));
     }
 }
